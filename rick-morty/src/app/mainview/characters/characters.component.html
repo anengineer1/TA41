@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row">
+		<!-- This block is the one that needs to be repeated -->
+		<div class="col-1 border" style="width: 240px" *ngFor="let char of characters">
+			<div class="row mh-100">
+				<img alt="" src="{{char.image}}" style="width: 240px;" />
+			</div>
+			<div class="row">
+				<p class="text-center">{{char.name}}</p>
+			</div>
+			<div class="row">
+				<div class="d-grid gap-2">
+					<button class="btn btn-primary" type="button">See more</button>
+
+				</div>
+			</div>
+		</div>
+		<!-- End of block that needs to be repeated -->
+	</div>
+
+</div>
