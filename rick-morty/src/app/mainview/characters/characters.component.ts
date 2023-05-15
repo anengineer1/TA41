@@ -18,6 +18,8 @@ export class CharactersComponent implements OnInit {
 
 
 	ngOnInit(): void {
+		// init char
+		this.getCharacterDetail('1');
 
 		this.charactersListService.returndataset().subscribe(
 			result => {
