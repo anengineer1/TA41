@@ -10,7 +10,8 @@
 			</div>
 			<div class="row">
 				<div class="d-grid gap-2">
-					<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#myModal" (click)="getCharacterDetail(char.id)">See more</button>
+					<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#myModal"
+						(click)="getCharacterDetail(char.id)">See more</button>
 
 				</div>
 			</div>
@@ -33,15 +34,19 @@
 
 			<!-- Modal body -->
 			<div class="modal-body">
-			  <p>Id: {{characterDetails.id}}</p>
-			  <p>Name: {{characterDetails.name}}</p>
-			  <p>Type: {{characterDetails.type}}</p>
-			  <p>Origin: {{characterDetails.origin.name}}</p>
-			  <p>Location: {{characterDetails.origin | json}}</p>
-			  <p>First appearance: {{characterDetails.episode | slice:0:1}}</p>
-			  <p>Episodes</p>
-			  <p *ngFor="let episode of characterDetails.episode">{{episode}}</p>
-			  <p>Created: {{characterDetails.created | date}} </p>
+				<ng-container *ngIf="characterDetails">
+					<p>Id: {{characterDetails.id}}</p>
+					<p>Name: {{characterDetails.name}}</p>
+					<p>Type: {{characterDetails.type}}</p>
+					<ng-container *ngIf="characterDetails.origin">
+						<p>Origin: {{characterDetails.origin.name}}</p>
+					</ng-container>
+					<p>Location: {{characterDetails.origin | json}}</p>
+					<p>First appearance: {{characterDetails.episode | slice:0:1}}</p>
+					<p>Episodes</p>
+					<p *ngFor="let episode of characterDetails.episode">{{episode}}</p>
+					<p>Created: {{characterDetails.created | date}} </p>
+				</ng-container>
 			</div>
 
 			<!-- Modal footer -->

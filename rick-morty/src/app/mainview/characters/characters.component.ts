@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { CharacterListServiceService } from 'src/app/character-list-service.service';
 import { CharacterDetailServiceService } from 'src/app/character-detail-service.service';
 
@@ -11,7 +10,7 @@ import { CharacterDetailServiceService } from 'src/app/character-detail-service.
 export class CharactersComponent implements OnInit {
 
 	characters: any = null;
-	characterDetails: any = null;
+	characterDetails: any = {};
 
 	constructor(private charactersListService: CharacterListServiceService,
 		private characterDetailService: CharacterDetailServiceService) {}
