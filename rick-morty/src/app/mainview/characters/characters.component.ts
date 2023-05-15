@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CharacterListServiceService } from 'src/app/character-list-service.service';
+import { CharacterDetailServiceService } from 'src/app/character-detail-service.service';
 
 @Component({
 	selector: 'app-characters',
@@ -8,27 +10,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CharactersComponent implements OnInit {
 
-	basechar_url: string = 'https://rickandmortyapi.com/api/character/';
 	characters: any = null;
+	characterDetails: any = null;
 
-	constructor(private http: HttpClient) {}
+	constructor(private charactersListService: CharacterListServiceService,
+		private characterDetailService: CharacterDetailServiceService) {}
 
 
 	ngOnInit(): void {
 
-		let chars_url: string = this.basechar_url;
-		// adds 10 random numbers at the end of the url to later get them
-		for (var i = 0; i < 10; i++) {
-			let random_number: number = Math.floor(Math.random() * (825 - 0 + 1)) + 0;
-			chars_url += random_number.toString();
-			if (i < 10) {
-				chars_url += ',';
-			}
-
-		}
-
-
-		this.http.get(chars_url).subscribe(
+		this.charactersListService.returndataset().subscribe(
 			result => {
 				this.characters = result;
 			},
@@ -38,6 +29,15 @@ export class CharactersComponent implements OnInit {
 		);
 	}
 
-
+	getCharacterDetail(char_code: string) {
+		this.characterDetailService.returndetails(char_code).subscribe(
+			result => {
+				this.characterDetails = result;
+			},
+			error => {
+				console.log('Problem occurred')
+			}
+		)
+	}
 
 }
