@@ -15,6 +15,14 @@
 
 				</div>
 			</div>
+			<div class="row">
+				<div class="d-grid gap-2">
+					<button class="btn btn-danger" type="button"
+						(click)="deleteCertainCharacter(char.id)">Delete</button>
+
+				</div>
+			</div>
+
 		</div>
 		<!-- End of block that needs to be repeated -->
 	</div>
@@ -37,21 +45,17 @@
 				<ng-container *ngIf="characterDetails">
 					<p>Id: {{characterDetails.id}}</p>
 					<p>Name: {{characterDetails.name}}</p>
-					<p>Type: {{characterDetails.type}}</p>
-					<ng-container *ngIf="characterDetails.origin">
-						<p>Origin: {{characterDetails.origin.name}}</p>
-					</ng-container>
-					<p>Location: {{characterDetails.origin | json}}</p>
-					<p>First appearance: {{characterDetails.episode | slice:0:1}}</p>
-					<p>Episodes</p>
-					<p *ngFor="let episode of characterDetails.episode">{{episode}}</p>
-					<p>Created: {{characterDetails.created | date}} </p>
+					<p>Status: {{characterDetails.status}}</p>
+					<p>Species: {{characterDetails.species}}</p>
+					<p>First appearance: {{characterDetails.gender}}</p>
+					<p>First appearance: {{characterDetails.gender}}</p>
 				</ng-container>
 			</div>
 
 			<!-- Modal footer -->
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Update</button>
 			</div>
 
 		</div>

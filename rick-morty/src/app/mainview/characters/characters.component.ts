@@ -20,7 +20,7 @@ export class CharactersComponent implements OnInit {
 		// init char
 		this.getCharacterDetail('1');
 
-		this.charactersListService.returndataset().subscribe(
+		this.charactersListService.listAllCharacters().subscribe(
 			result => {
 				this.characters = result;
 			},
@@ -31,7 +31,18 @@ export class CharactersComponent implements OnInit {
 	}
 
 	getCharacterDetail(char_code: string) {
-		this.characterDetailService.returndetails(char_code).subscribe(
+		this.charactersListService.getCharacter(char_code).subscribe(
+			result => {
+				this.characterDetails = result;
+			},
+			error => {
+				console.log('Problem occurred')
+			}
+		)
+	}
+
+    	deleteCertainCharacter(char_code: string) {
+		this.charactersListService.deleteCharacter(char_code).subscribe(
 			result => {
 				this.characterDetails = result;
 			},
