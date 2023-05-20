@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { Character } from './character';
 
 @Injectable({
 	providedIn: 'root'
@@ -13,21 +14,6 @@ export class CharacterListServiceService {
 
 	constructor(private http: HttpClient) {}
 
-	returndataset() {
-
-		let chars_url: string = this.basechar_url;
-		for (var i = 0; i < 10; i++) {
-			let random_number: number = Math.floor(Math.random() * (825 - 0 + 1)) + 0;
-			chars_url += random_number.toString();
-			if (i < 10) {
-				chars_url += ',';
-			}
-
-		}
-
-		return this.http.get(chars_url);
-	}
-
 	// List all characters in the database
 	listAllCharacters(): Observable<any> {
 		return this.http.get(this.apiUrl).pipe(catchError(this.handleError));
@@ -38,7 +24,7 @@ export class CharacterListServiceService {
 		return this.http.get(`${this.apiUrl}/${id}`).pipe(catchError(this.handleError));
 	}
 
-	createCharacter(data: any): Observable<any> {
+	createCharacter(data: Character): Observable<any> {
 		return this.http.post(this.apiUrl, data).pipe(
 			catchError(this.handleError)
 		);

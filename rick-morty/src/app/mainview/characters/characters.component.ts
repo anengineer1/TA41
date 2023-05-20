@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CharacterListServiceService } from 'src/app/character-list-service.service';
 import { CharacterDetailServiceService } from 'src/app/character-detail-service.service';
+import { Character } from 'src/app/character';
 
 @Component({
 	selector: 'app-characters',
@@ -10,7 +11,7 @@ import { CharacterDetailServiceService } from 'src/app/character-detail-service.
 export class CharactersComponent implements OnInit {
 
 	characters: any = null;
-	characterDetails: any = {};
+	characterDetails: Character = new Character;
 
 	constructor(private charactersListService: CharacterListServiceService,
 		private characterDetailService: CharacterDetailServiceService) {}
@@ -41,9 +42,21 @@ export class CharactersComponent implements OnInit {
 		)
 	}
 
-    	deleteCertainCharacter(char_code: string) {
+	updateCertainCharacter() {
+		this.charactersListService.updateCharacter(this.characterDetails.id, this.characterDetails).subscribe(
+			response => {
+				console.log(this.characterDetails);
+				console.log(response);
+			},
+			error => {
+				console.log(error);
+			})
+	}
+
+	deleteCertainCharacter(char_code: string) {
 		this.charactersListService.deleteCharacter(char_code).subscribe(
 			result => {
+				this.ngOnInit();
 				this.characterDetails = result;
 			},
 			error => {

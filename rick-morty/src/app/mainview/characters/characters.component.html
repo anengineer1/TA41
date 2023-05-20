@@ -17,8 +17,7 @@
 			</div>
 			<div class="row">
 				<div class="d-grid gap-2">
-					<button class="btn btn-danger" type="button"
-						(click)="deleteCertainCharacter(char.id)">Delete</button>
+					<button class="btn btn-danger" type="button" (click)="deleteCertainCharacter(char.id)">Delete</button>
 
 				</div>
 			</div>
@@ -47,15 +46,85 @@
 					<p>Name: {{characterDetails.name}}</p>
 					<p>Status: {{characterDetails.status}}</p>
 					<p>Species: {{characterDetails.species}}</p>
-					<p>First appearance: {{characterDetails.gender}}</p>
-					<p>First appearance: {{characterDetails.gender}}</p>
+					<p>Gender: {{characterDetails.gender}}</p>
+					<p>Origin: {{characterDetails.origin}}</p>
+					<p>Location: {{characterDetails.location}}</p>
 				</ng-container>
 			</div>
 
 			<!-- Modal footer -->
 			<div class="modal-footer">
-			  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-			  <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Update</button>
+				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-warning" data-bs-toggle="modal" href="#myModal2">Update</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="myModal2">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Character</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<ng-container *ngIf="characterDetails">
+					<form action="/action_page.php">
+						<div class="mb-3 mt-3">
+							<label for="charid" class="form-label">Id:</label>
+							<input type="text" class="form-control" id="charid" placeholder="Character Id" name="charid"
+								[(ngModel)]="characterDetails.id">
+						</div>
+						<div class="mb-3 mt-3">
+							<label for="charname" class="form-label">Name:</label>
+							<input type="text" class="form-control" id="charname" placeholder="Character Name" name="charname"
+								[(ngModel)]="characterDetails.name">
+						</div>
+
+						<div class="mb-3 mt-3">
+							<label for="status" class="form-label">Status:</label>
+							<input type="text" class="form-control" id="charstatus" placeholder="Character Name" name="charstatus"
+								[(ngModel)]="characterDetails.status">
+						</div>
+
+						<div class="mb-3 mt-3">
+							<label for="charspecies" class="form-label">Species:</label>
+							<input type="text" class="form-control" id="charspecies" placeholder="Character Species"
+								name="charspecies" [(ngModel)]="characterDetails.species">
+						</div>
+
+						<div class="mb-3 mt-3">
+							<label for="chargender" class="form-label">Gender:</label>
+							<input type="text" class="form-control" id="chargender" placeholder="Character Gender" name="chargender"
+								[(ngModel)]="characterDetails.gender">
+						</div>
+
+						<div class="mb-3 mt-3">
+							<label for="charorigin" class="form-label">Origin:</label>
+							<input type="text" class="form-control" id="charorigin" placeholder="Character Origin" name="charorigin"
+								[(ngModel)]="characterDetails.origin">
+						</div>
+
+						<div class="mb-3 mt-3">
+							<label for="charlocation" class="form-label">Location:</label>
+							<input type="text" class="form-control" id="charlocation" placeholder="Character Location"
+								name="charlocation" [(ngModel)]="characterDetails.location">
+						</div>
+						<button type="submit" class="btn btn-primary" (click)="updateCertainCharacter()">Submit</button>
+					</form>
+
+				</ng-container>
+			</div>
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="ngOnInit()">Close</button>
 			</div>
 
 		</div>
