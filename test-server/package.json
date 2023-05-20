@@ -1,0 +1,14 @@
+{
+  "name": "test-server",
+  "version": "0.1.0",
+  "description": "Just a test server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Francisco",
+  "license": "MIT",
+  "dependencies": {
+    "json-server": "^0.17.3"
+  }
+}

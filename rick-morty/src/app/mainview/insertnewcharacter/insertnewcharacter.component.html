@@ -1,0 +1,39 @@
+<div class="container">
+	<form action="/action_page.php">
+		<div class="mb-3 mt-3">
+			<label for="charid" class="form-label">Id:</label>
+			<input type="text" class="form-control" id="charid" placeholder="Character Id" name="charid" [(ngModel)]="characterDetail.id">
+		</div>
+		<div class="mb-3 mt-3">
+			<label for="charname" class="form-label">Name:</label>
+			<input type="text" class="form-control" id="charname" placeholder="Character Name" name="charname"  [(ngModel)]="characterDetail.name">
+		</div>
+
+		<div class="mb-3 mt-3">
+			<label for="status" class="form-label">Status:</label>
+			<input type="text" class="form-control" id="charstatus" placeholder="Character Name" name="charstatus"  [(ngModel)]="characterDetail.status">
+		</div>
+
+		<div class="mb-3 mt-3">
+			<label for="charspecies" class="form-label">Species:</label>
+			<input type="text" class="form-control" id="charspecies" placeholder="Character Species" name="charspecies"  [(ngModel)]="characterDetail.species">
+		</div>
+
+		<div class="mb-3 mt-3">
+			<label for="chargender" class="form-label">Gender:</label>
+			<input type="text" class="form-control" id="chargender" placeholder="Character Gender" name="chargender" [(ngModel)]="characterDetail.gender">
+		</div>
+
+		<div class="mb-3 mt-3">
+			<label for="charorigin" class="form-label">Origin:</label>
+			<input type="text" class="form-control" id="charorigin" placeholder="Character Origin" name="charorigin" [(ngModel)]="characterDetail.origin">
+		</div>
+
+		<div class="mb-3 mt-3">
+			<label for="charlocation" class="form-label">Location:</label>
+			<input type="text" class="form-control" id="charlocation" placeholder="Character Location" name="charlocation" [(ngModel)]="characterDetail.location">
+		</div>
+		<button type="submit" class="btn btn-primary" (click)="insertCharacter()">Submit</button>
+	</form>
+
+</div>
